@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    /*
-    string vehicleClass = "Vehicle";
-    string vehicleModel = "";
-    string displayName = "";
-    int armor  = 0;
-    int health = 0;
-    int damage = 0;
-    float damageReduction = 1f;
-    */
+    
+    string vehicleClass;
+    string vehicleModel;
+    string displayName;
+    int armorPoints;
+    int healthPoints;
+    int damagePoints;
+
+    float damageMultiPlyer;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        damageMultiPlyer = 1f;
     }
 
     // Update is called once per frame
