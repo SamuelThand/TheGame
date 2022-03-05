@@ -16,7 +16,7 @@ public class Vehicle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Console.WriteLine("Korv");
+        
     }
 
     // Update is called once per frame
