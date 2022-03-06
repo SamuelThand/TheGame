@@ -11,14 +11,17 @@ public class Player : MonoBehaviour
     private Vector3 orbitPosition = Vector3.zero;
     private int vOrbitLimit = 360;
     private int hOrbitLimit = 360;
-    [SerializeField]Avatar avatar;
+    Avatar avatar;
+    [SerializeField]List<GameObject> os;
+
     
     
     
     // Start is called before the first frame update
     void Start()
     {
-        avatar = GetComponent<T1>();
+
+        avatar = GetComponent<Cap>();
         firstPerson = false;
         cam = Camera.main;
         cam.transform.position = orbitPosition;
@@ -56,8 +59,10 @@ public class Player : MonoBehaviour
             cam.transform.Rotate(new Vector3(1, 0, 0), direction.y * 180);
             cam.transform.Rotate(new Vector3(0, 1, 0), direction.x * 180, Space.World);
             cam.transform.Translate(new Vector3(0, 0, -10));
+            
 
             orbitPosition = cam.ScreenToViewportPoint(Input.mousePosition);
+
         }
         //Debug.Log("Camera:" + cam.transform.rotation.x);
     }
