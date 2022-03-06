@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField]private bool firstPerson;
+    [SerializeField]private bool firstPerson = false;
     string handle;
     [SerializeField] private Camera cam;
     private Vector3 orbitPosition = Vector3.zero;
@@ -21,8 +21,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-        avatar = GetComponent<Cap>();
-        firstPerson = false;
+        //avatar = GetComponent<Cap>();
         cam = Camera.main;
         cam.transform.position = orbitPosition;
         
