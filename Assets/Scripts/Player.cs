@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+
+    [SerializeField]private bool firstPerson;
     string handle;
     [SerializeField] private Camera cam;
     private Vector3 orbitPosition = Vector3.zero;
     private int vOrbitLimit = 360;
     private int hOrbitLimit = 360;
-    //Vehicle me;
+    [SerializeField]Avatar avatar;
     
     
     
     // Start is called before the first frame update
     void Start()
     {
+        avatar = GetComponent<T1>();
+        firstPerson = false;
         cam = Camera.main;
         cam.transform.position = orbitPosition;
         
