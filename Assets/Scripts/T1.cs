@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tank : Vehicle
+public class T1 : Recon
 {
-    
     // Start is called before the first frame update
     void Start()
     {
-        printMessage += "Tank ";
+        
     }
 
     // Update is called once per frame
