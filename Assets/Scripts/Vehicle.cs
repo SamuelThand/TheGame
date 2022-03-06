@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Vehicle : MonoBehaviour
+public abstract class Vehicle : MonoBehaviour
 {
     private protected string printMessage;
 
