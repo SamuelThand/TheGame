@@ -28,6 +28,22 @@ public class Player : MonoBehaviour
         {
             orbitPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Debug.Log("s");
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("a");
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Debug.Log("d");
+        }
         if (Input.GetMouseButton(0))
         {
             Vector3 direction = orbitPosition - cam.ScreenToViewportPoint(Input.mousePosition); //Normalized?
@@ -39,5 +55,6 @@ public class Player : MonoBehaviour
 
             orbitPosition = cam.ScreenToViewportPoint(Input.mousePosition);
         }
+        //Debug.Log("Camera:" + cam.transform.rotation.x);
     }
 }
