@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField]private bool firstPerson = false;
+    // [SerializeField]private bool firstPerson = false;
     string handle;
     [SerializeField] private Camera cam;
     private Vector3 orbitPosition = Vector3.zero;
