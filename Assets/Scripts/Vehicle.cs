@@ -5,6 +5,8 @@ using UnityEngine;
 
 public abstract class Vehicle
 {
+    public float topSpeed = 1;
+    public float turnSpeed = 1;
     
     // Start is called before the first frame update
     void Start()
