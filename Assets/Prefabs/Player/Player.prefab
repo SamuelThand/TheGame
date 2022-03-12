@@ -47,6 +47,8 @@ MonoBehaviour:
   avatar: {fileID: 0}
   cameraPoint: {fileID: 0}
   playerCamera: {fileID: 503166768875638259}
+  hideMouse: 1
+  currentSpeed: 0
 --- !u!1 &7999874936966661985
 GameObject:
   m_ObjectHideFlags: 0

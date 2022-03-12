@@ -7,12 +7,12 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-
+    // Refs
     public Avatar avatar;
     Rigidbody playerBody;
     public Transform cameraPoint;
     [SerializeReference] Camera playerCamera;
-
+    [SerializeField] private bool hideMouse = true;
     // Keypress variables
     private bool wKeywasPressed;
     private bool aKeywasPressed;
@@ -21,12 +21,14 @@ public class PlayerController : MonoBehaviour
     private bool mouse0KeywasPressed;
 
 
-    // HUD 
-    private double currentSpeed;
+    // HUD
+    [SerializeField] private string speedKMh;
+    double currentSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = !hideMouse;
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
         
@@ -35,8 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        // TODO - Få bórt detta från update
-        // Avvakta med att ta bort denna text
+        
 
         
 
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
         currentSpeed = Math.Round(playerBody.velocity.magnitude * 3.6);
         
         // Logs the current speed in KM/h to console
-        //Debug.Log((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
+        speedKMh = "" + ((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
         
         if (wKeywasPressed)
         {
