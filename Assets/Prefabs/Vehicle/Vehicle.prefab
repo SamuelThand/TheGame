@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2867901821890376816, guid: b9f5fe933f4493b428fdabb50da1b8d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5406523551966236666, guid: b9f5fe933f4493b428fdabb50da1b8d6, type: 3}
       propertyPath: m_Name
       value: Vehicle
@@ -74,3 +78,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66be5bd5c05d878439df861aba912b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
+  topSpeed: 1
+  turnSpeed: 1
+  accelerationSpeed: 1
+  cameraPoint: {fileID: 0}
+  player: {fileID: 0}

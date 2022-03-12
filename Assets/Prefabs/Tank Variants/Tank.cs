@@ -7,7 +7,8 @@ public class Tank : MonoBehaviour
     // Attributes
     public float turretSpeed = 1;
     public float cannonSpeed = 1;
-    
+    private float cannonMinAngle = -0.5f;
+    private float cannonMaxAngle = -0.4f;
     // References
     public Transform turret;
     public Transform cannon;
@@ -18,15 +19,14 @@ public class Tank : MonoBehaviour
     public float distanceFromAvatar = 1;
 
     // Logs
-    public Quaternion tRot;
-    public Quaternion cRot;
-    public Vector2 turretRotation;
-    public Vector2 cannonRotation;
-    public Quaternion tankRotation;
-    public Transform ROT;
+    public float cannonPitch;
+    public float turretYaw;
+
     // Start is called before the first frame update
     void Start()
     {
+       
+      
         
     }
 
@@ -41,7 +41,9 @@ public class Tank : MonoBehaviour
         Quaternion rotation = turret.transform.rotation;
         turret.Rotate(Vector3.forward*mouseRotation.x*turretSpeed);
         cannon.Rotate(Vector3.right*mouseRotation.y*cannonSpeed);
-
+        turretYaw = turret.rotation.z;
+        cannonPitch = cannon.rotation.x;
+        //cameraPoint.SetParent(turret);
         /*
         this.transform.rotation;
         tRot = turret.rotation;
