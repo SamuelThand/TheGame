@@ -20,23 +20,30 @@ public class PlayerController : MonoBehaviour
     private bool dKeywasPressed;
     private bool mouse0KeywasPressed;
 
+
     // HUD 
     private double currentSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerBody = avatar.GetComponent<Rigidbody>();
+        cameraPoint = avatar.cameraPoint;
         
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        // TODO - Få bórt detta från update
+        // Avvakta med att ta bort denna text
+
+        
+
         // Sets camera to camerapoint in Avatar
         playerCamera.transform.SetPositionAndRotation(avatar.cameraPoint.position, avatar.cameraPoint.rotation);
 
-        // TODO - Få bórt detta från update
-        playerBody = avatar.GetComponent<Rigidbody>();
+        
 
         if (Input.GetKey(KeyCode.W))
         {

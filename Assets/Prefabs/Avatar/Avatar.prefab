@@ -39,8 +39,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5963066368641314888}
-  - component: {fileID: -2867901821890376816}
   - component: {fileID: 7178277117779196824}
+  - component: {fileID: -2867901821890376816}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -63,29 +63,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2867901821890376816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406523551966236666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f00affce9ee2c245a02d5e5b9836860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 0
-  maxSpeed: 1
-  defaultCamera: {fileID: 0}
-  cameraPoint: {fileID: 353546390079156530}
-  cameraPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  cameraPointsNames:
-  - FIRST
-  - THIRD
-  player: {fileID: 0}
 --- !u!54 &7178277117779196824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102,3 +79,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2867901821890376816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5406523551966236666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f00affce9ee2c245a02d5e5b9836860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0
+  topSpeed: 1
+  turnSpeed: 1
+  accelerationSpeed: 1
+  cameraPoint: {fileID: 353546390079156530}
+  player: {fileID: 0}
