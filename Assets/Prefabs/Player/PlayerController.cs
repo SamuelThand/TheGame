@@ -17,11 +17,6 @@ public class PlayerController : MonoBehaviour
     private bool sKeywasPressed;
     private bool dKeywasPressed;
     private bool mouse0KeywasPressed;
-
-    
-    
-    
-        
        
     // Start is called before the first frame update
     void Start()
@@ -32,7 +27,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Sets camera to camerapoint in Avatar
         playerCamera.transform.SetPositionAndRotation(avatar.cameraPoint.position, avatar.cameraPoint.rotation);
+
+        // TODO - Få bórt detta från update
         playerBody = avatar.GetComponent<Rigidbody>();
 
         if (Input.GetKey(KeyCode.W))
@@ -64,7 +62,6 @@ public class PlayerController : MonoBehaviour
         if (aKeywasPressed)
         {
             playerBody.transform.Rotate(Vector3.up, -0.7f);
-            
             aKeywasPressed = false;
         }
         if (sKeywasPressed)

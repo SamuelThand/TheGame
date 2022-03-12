@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Tank : MonoBehaviour
 {
-    [Header("Tank:")]
-    public int turretSpeed = 1;
+    // Attributes
+    public float turretSpeed = 1;
+    public float cannonSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
