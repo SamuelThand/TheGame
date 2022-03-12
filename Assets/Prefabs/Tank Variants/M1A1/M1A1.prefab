@@ -156,6 +156,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7794056140549891738, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
+      propertyPath: topSpeed
+      value: 72.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794056140549891738, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
+      propertyPath: turnSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794056140549891738, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
+      propertyPath: accelerationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7794056140549891738, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
       propertyPath: cameraPoints.Array.size
       value: 4
       objectReference: {fileID: 0}

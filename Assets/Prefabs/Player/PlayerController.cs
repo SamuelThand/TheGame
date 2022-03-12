@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Specialized;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,13 +12,17 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerBody;
     public Transform cameraPoint;
     [SerializeReference] Camera playerCamera;
+
     // Keypress variables
     private bool wKeywasPressed;
     private bool aKeywasPressed;
     private bool sKeywasPressed;
     private bool dKeywasPressed;
     private bool mouse0KeywasPressed;
-       
+
+    // HUD 
+    private double currentSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,10 +59,17 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        currentSpeed = Math.Round(playerBody.velocity.magnitude * 3.6);
+        
+        // Logs the current speed in KM/h to console
+        Debug.Log((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
+        
         if (wKeywasPressed)
         {
-            playerBody.AddForce(avatar.transform.forward * 25 *avatar.accelerationSpeed, ForceMode.Acceleration);
+            if (!(currentSpeed >= avatar.topSpeed)) {
+            playerBody.AddForce(avatar.transform.forward * 25 * avatar.accelerationSpeed, ForceMode.Acceleration);
             wKeywasPressed = false;
+            } 
         }
         if (aKeywasPressed)
         {
@@ -66,8 +78,10 @@ public class PlayerController : MonoBehaviour
         }
         if (sKeywasPressed)
         {
-            playerBody.AddForce(avatar.transform.forward * -20, ForceMode.Acceleration);
+            if (!(currentSpeed >= (avatar.topSpeed / 2))) {
+            playerBody.AddForce(avatar.transform.forward * -20 * avatar.accelerationSpeed, ForceMode.Acceleration);
             sKeywasPressed = false;
+            }
         }
         if (dKeywasPressed)
         {
@@ -76,3 +90,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
+    //  void FixedUpdate()
+    //  {
+    //      speed = Vector3.Distance(oldPosition, transform.position) * 100f;
+    //      oldPosition = transform.position;
+    //      Debug.Log("Speed: " + speed.ToString("F2"));
+    //  }

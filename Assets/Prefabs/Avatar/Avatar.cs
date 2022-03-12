@@ -11,7 +11,6 @@ public class Avatar : MonoBehaviour
     [Min(0)] public float turnSpeed = 1;
     [Min(0)] public float accelerationSpeed = 1;
 
-
     [SerializeReference] public Transform cameraPoint;
 
     public PlayerController player;
