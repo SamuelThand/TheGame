@@ -56,12 +56,12 @@ public class PlayerController : MonoBehaviour
     {
         if (wKeywasPressed)
         {
-            playerBody.AddForce(avatar.transform.forward * 25, ForceMode.Acceleration);
+            playerBody.AddForce(avatar.transform.forward * 25 *avatar.accelerationSpeed, ForceMode.Acceleration);
             wKeywasPressed = false;
         }
         if (aKeywasPressed)
         {
-            playerBody.transform.Rotate(Vector3.up, -0.7f);
+            playerBody.transform.Rotate(Vector3.up, -0.7f * avatar.turnSpeed);
             aKeywasPressed = false;
         }
         if (sKeywasPressed)
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         if (dKeywasPressed)
         {
-            playerBody.transform.Rotate(Vector3.up, 0.7f);
+            playerBody.transform.Rotate(Vector3.up, 0.7f * avatar.turnSpeed);
             dKeywasPressed = false;
         }
     }

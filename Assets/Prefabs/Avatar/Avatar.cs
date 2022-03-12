@@ -8,6 +8,8 @@ public class Avatar : MonoBehaviour
     // Attributes
     [Min(0)] public float weight = 1;
     [Min(0)] public float topSpeed = 1;
+    [Min(0)] public float turnSpeed = 1;
+    [Min(0)] public float accelerationSpeed = 1;
 
 
     [SerializeReference] public Transform cameraPoint;
