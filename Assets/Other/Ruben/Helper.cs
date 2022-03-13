@@ -3,63 +3,70 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[Serializable]
 public class Key
 {
     public KeyCode code;
     public bool state;
     public Func<KeyCode, bool> func;
+    public Key(KeyCode c)
+    {
+        code = c;
+        state = false;
+        func = null;
+    }
+    public Key (KeyCode kc,Func<KeyCode,bool> f)
+    {
+        code = kc;
+        state = false;
+        func = f;
+    }
+    
 }
 public class KeyListener
 {
-    List<Key> keys;
+    [SerializeField] public List<Key> keys;
     public KeyListener()
     {
-
+        keys = new List<Key>();
     }
-
-    void Add(KeyCode key,Func<KeyCode,bool> func)
+    public void AddKey(Key key)
     {
-        Key newKey = new Key();
-        newKey.code = key;
-        newKey.func = func;
-        newKey.state = false;
-    }
-    void AddRange(List<KeyCode> newKeys)
-    {
+        if (key.func != null)
+            key.func = Input.GetKey;
 
+        keys.Add(key);
     }
-    void scan()
+    public void AddKeyCodeRange(List<KeyCode> ListOfKeys )
+    {
+        foreach( KeyCode k in ListOfKeys )
+        {
+            AddKey(new Key(k));
+        }
+    }
+    public void scan()
     {
         foreach (Key key in keys)
         {
-            if (key.func(key.code))
+            bool result = key.func(key.code); 
+            ;
+            if (result)
             {
                 key.state = true;
+                Debug.Log("You pressed: " + key.code.ToString());
             }
         }
     }
-}
-public class Helper : MonoBehaviour
-{
-    
-
-   
-    void Start()
+    public void falsify()
     {
-
-        
+        foreach (Key key in keys)
+        {
+                key.state = false;
+           
+        }
     }
-
-    
-    void Update()
-    {
-        
-
-    }
-
-    
-    private List<KeyCode> AddNumeric()
+    // Premade lists of keys
+    static public List<KeyCode> Numeric()
     {
         List<KeyCode> numeric = new List<KeyCode>();
         //Keys
@@ -74,10 +81,10 @@ public class Helper : MonoBehaviour
         numeric.Add(KeyCode.Alpha8);
         numeric.Add(KeyCode.Alpha9);
         //
-        
+
         return numeric;
     }
-    private List<KeyCode> AddKeypad()
+    static public List<KeyCode> Keypad()
     {
         List<KeyCode> keypad = new List<KeyCode>();
         //Keys
@@ -94,7 +101,7 @@ public class Helper : MonoBehaviour
         //
         return keypad;
     }
-    private List<KeyCode> AddMove()
+    static public List<KeyCode> Move()
     {
         List<KeyCode> move = new List<KeyCode>();
         //Keys
@@ -108,7 +115,7 @@ public class Helper : MonoBehaviour
         //
         return move;
     }
-    private List<KeyCode> AddMouse()
+    static public List<KeyCode> Mouse()
     {
         List<KeyCode> mouse = new List<KeyCode>();
         //keys
@@ -118,5 +125,30 @@ public class Helper : MonoBehaviour
         //
         return mouse;
     }
+}
+public class Helper : MonoBehaviour
+{
+
+
+    public KeyListener keyListener = new KeyListener();
+     
+    void Start()
+    {
+        keyListener.AddKeyCodeRange(KeyListener.Keypad());
+        Debug.Log("Keys in listener" + keyListener.keys.Count);
+    }
+
     
+    void Update()
+    {
+        
+    }
+    private void FixedUpdate()
+    {
+        
+    }
+
+
+
+
 }
