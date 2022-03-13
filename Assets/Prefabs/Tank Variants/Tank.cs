@@ -7,27 +7,36 @@ public class Tank : MonoBehaviour
     // Attributes
     public float turretSpeed = 1;
     public float cannonSpeed = 1;
-    private float cannonMinAngle = -0.5f;
-    private float cannonMaxAngle = -0.4f;
+    [SerializeField] private int cannonMinAngle = -5;
+    [SerializeField] private int cannonMaxAngle = 20;
+
     // References
     public Transform turret;
     public Transform cannon;
 
     // Mouse rotation
     Vector2 mouseRotation = Vector2.zero;
-    private float mouseSpeed = 1;
+    private float sensitivityX = 1.2f;
+    private float sensitivityY = 1.0f;
+    
+    private float offsetX;
+    private float offsetY;
+
+    private float rotationX = 0f;
+    private float rotationY = 0f;
     public float distanceFromAvatar = 1;
 
     // Logs
-    public float cannonPitch;
-    public float turretYaw;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-       
-      
-        
+         
+        offsetX = Input.GetAxis("Mouse X") * sensitivityX;
+        offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
+
+
     }
 
     // Update is called once per frame
@@ -36,32 +45,19 @@ public class Tank : MonoBehaviour
         // Turrent rotation = Z / forward
         // Cannon rotation  = X / right
 
-        mouseRotation = new Vector2 (Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        rotationX += (Input.GetAxis("Mouse X") * sensitivityX) - offsetX;
+        rotationY += (Input.GetAxis("Mouse Y") * sensitivityY) - offsetY;
 
-        Quaternion rotation = turret.transform.rotation;
-        turret.Rotate(Vector3.forward*mouseRotation.x*turretSpeed);
-        cannon.Rotate(Vector3.right*mouseRotation.y*cannonSpeed);
-        turretYaw = turret.rotation.z;
-        cannonPitch = cannon.rotation.x;
-        //cameraPoint.SetParent(turret);
-        /*
-        this.transform.rotation;
-        tRot = turret.rotation;
-        cRot = cannon.rotation;
-        tankRotation = this.transform.rotation;
-        // Mouselook on cameraPoint
+        // Uncomment for turret turning limit
+        // rotationY = Mathf.Clamp(rotationY, 0, 90);
+        rotationY = Mathf.Clamp(rotationY, cannonMinAngle, cannonMaxAngle);
+
+
+        cannon.localEulerAngles = new Vector3(rotationY,cannon.localEulerAngles.y,cannon.localEulerAngles.z);
+        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y,rotationX-90);
+    }
+    private void FixedUpdate()
+    {
         
-
-        turretRotation = new Vector2(-90,mouseRotation.y);
-
-        cannon.rotation = turret.rotation;
-        cannonRotation = new Vector3(-mouseRotation.x-90,mouseRotation.y,1);
-
-        turret.eulerAngles = (Vector2)turretRotation * mouseSpeed;
-        cannon.eulerAngles = cannonRotation * mouseSpeed;
-
-        //cannon.eulerAngles = (Vector2)cannonRotation * cannonSpeed;
-        //turret.eulerAngles = (Vector2)mouseRotation * mouseSpeed;
-        */
     }
 }
