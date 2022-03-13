@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         currentSpeed = Math.Round(playerBody.velocity.magnitude * 3.6);
         
-        // Logs the current speed in KM/h to console
+        // Logs the current speed in KM/h to the playerController
         speedKMh = "" + ((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
         
         if (wKeywasPressed)
