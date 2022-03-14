@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: turret
       value: 
       objectReference: {fileID: 8422542801689825665}
+    - target: {fileID: 2994037494398874766, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
+      propertyPath: cameraPoint
+      value: 
+      objectReference: {fileID: 1187384638486265010}
     - target: {fileID: 3127393806606615057, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.11
@@ -208,6 +212,11 @@ PrefabInstance:
 --- !u!4 &5067514801509449160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7410734742269287746, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
+  m_PrefabInstance: {fileID: 2345067154721366154}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1187384638486265010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3526646363202837560, guid: 07a7fd629efdc944090ccea287a1e890, type: 3}
   m_PrefabInstance: {fileID: 2345067154721366154}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3385986067597904901

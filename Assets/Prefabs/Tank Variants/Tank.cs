@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Tank : Vehicle
 {
     // Attributes
     public float turretSpeed = 1;
@@ -36,6 +36,8 @@ public class Tank : MonoBehaviour
         offsetX = Input.GetAxis("Mouse X") * sensitivityX;
         offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
 
+        // Make camera follow turret
+        cameraPoint.parent = turret;
 
     }
 
@@ -55,6 +57,7 @@ public class Tank : MonoBehaviour
 
         cannon.localEulerAngles = new Vector3(rotationY,cannon.localEulerAngles.y,cannon.localEulerAngles.z);
         turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y,rotationX-90);
+
     }
     private void FixedUpdate()
     {

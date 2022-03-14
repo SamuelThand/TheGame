@@ -31,20 +31,13 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = !hideMouse;
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
-        
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        
-
-        
-
+    {
         // Sets camera to camerapoint in Avatar
         playerCamera.transform.SetPositionAndRotation(avatar.cameraPoint.position, avatar.cameraPoint.rotation);
-
-        
 
         if (Input.GetKey(KeyCode.W))
         {
