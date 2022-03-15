@@ -8,10 +8,11 @@ using RMInputEventListener;
 
 public class Helper : MonoBehaviour
 {
-    InputEventListener listener = new InputEventListener();
+    
     void Start()
     {
-        listener.listenTo(KeyCode.Keypad0, testCallBack);
+        InputEventListener.MTListener.listenTo(KeyCode.Alpha0, TestCallBack);
+        
     }
 
    
@@ -24,7 +25,7 @@ public class Helper : MonoBehaviour
     {
         
     }
-    public void testCallBack(KeyCode c)
+    public void TestCallBack(KeyCode c)
     {
         Debug.Log("This is working.");
     }
