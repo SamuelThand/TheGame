@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class helperFunctions : MonoBehaviour
+namespace MTHelpers
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MT
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    
+        static public string ExampleFunction(int anInput)
+        {
+            //Always use: static public <return type>
+            return "To include: using MTHelpers;";
+        }
     }
+    
 }

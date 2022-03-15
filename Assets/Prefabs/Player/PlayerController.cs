@@ -12,7 +12,10 @@ public class PlayerController : MonoBehaviour
     Rigidbody playerBody;
     public Transform cameraPoint;
     [SerializeReference] Camera playerCamera;
-    [SerializeField] private bool hideMouse = true;
+    
+    
+    [SerializeField] private CursorLockMode cursor;
+    public string lockState;
     // Keypress variables
     private bool wKeywasPressed;
     private bool aKeywasPressed;
@@ -28,16 +31,24 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = !hideMouse;
+        
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
+        
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        Cursor.lockState = (CursorLockMode)cursor;
+        
+
+        
+
         // Sets camera to camerapoint in Avatar
         playerCamera.transform.SetPositionAndRotation(avatar.cameraPoint.position, avatar.cameraPoint.rotation);
+
+        
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -55,8 +66,8 @@ public class PlayerController : MonoBehaviour
         {
             dKeywasPressed = true;
         }
-        
-        
+        //Cursor.lockState = CursorLockMode.Confined;
+
     }
     private void FixedUpdate()
     {
@@ -89,5 +100,8 @@ public class PlayerController : MonoBehaviour
             playerBody.transform.Rotate(Vector3.up, 0.7f * avatar.turnSpeed);
             dKeywasPressed = false;
         }
+        
+
     }
+    
 }
