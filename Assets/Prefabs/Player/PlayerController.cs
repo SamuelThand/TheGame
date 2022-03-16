@@ -31,10 +31,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
-        
     }
 
     // Update is called once per frame

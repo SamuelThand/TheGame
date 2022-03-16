@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4037041311273020911, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7939686145401220245, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
       propertyPath: m_RootOrder
@@ -67,11 +67,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tank
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8031590917419447643, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
 --- !u!1 &9160025021829210864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8640626175153034023, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
+  m_PrefabInstance: {fileID: 646083479337021911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3526646363202837560 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4037041311273020911, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
   m_PrefabInstance: {fileID: 646083479337021911}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2994037494398874766
@@ -86,4 +92,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b8b156f46466b49a5af08c4378c2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weight: 1
+  topSpeed: 1
+  turnSpeed: 1
+  accelerationSpeed: 1
+  cameraPoint: {fileID: 3526646363202837560}
+  player: {fileID: 0}
   turretSpeed: 1
+  cannonSpeed: 1
+  cannonMinAngle: -5
+  cannonMaxAngle: 20
+  turret: {fileID: 0}
+  cannon: {fileID: 0}
+  distanceFromAvatar: 1

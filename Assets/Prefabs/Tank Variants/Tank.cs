@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tank : MonoBehaviour
+public class Tank : Vehicle
 {
     // Attributes
     public float turretSpeed = 1;
     public float cannonSpeed = 1;
     [SerializeField] private int cannonMinAngle = -5;
     [SerializeField] private int cannonMaxAngle = 20;
+    [SerializeField] bool turretCam;
 
     // References
     public Transform turret;
@@ -49,7 +50,7 @@ public class Tank : MonoBehaviour
         rotationY += (Input.GetAxis("Mouse Y") * sensitivityY) - offsetY;
 
         // Uncomment for turret turning limit
-        // rotationY = Mathf.Clamp(rotationY, 0, 90);
+        // rotationY = Mathf.Clamp(rotationY, MIN, MAX);
         rotationY = Mathf.Clamp(rotationY, cannonMinAngle, cannonMaxAngle);
 
 
@@ -58,6 +59,18 @@ public class Tank : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
+       
+    }
+    private void OnValidate()
+    {
+        if (turretCam)
+        {
+            cameraPoint.parent = turret;
+        }
+        else
+        {
+            cameraPoint.parent = this.transform;
+        }
     }
 }
