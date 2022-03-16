@@ -102,6 +102,7 @@ MonoBehaviour:
   cannonSpeed: 1
   cannonMinAngle: -5
   cannonMaxAngle: 20
+  turretCam: 1
   turret: {fileID: 0}
   cannon: {fileID: 0}
   distanceFromAvatar: 1

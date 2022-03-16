@@ -36,7 +36,15 @@ public class Tank : Vehicle
          
         offsetX = Input.GetAxis("Mouse X") * sensitivityX;
         offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
-
+        if (turretCam)
+        {
+            
+            cameraPoint.gameObject.transform.parent = turret.gameObject.transform;
+        }
+        else
+        {
+            cameraPoint.gameObject.transform.parent = transform;
+        }
 
     }
 
@@ -62,15 +70,5 @@ public class Tank : Vehicle
 
        
     }
-    private void OnValidate()
-    {
-        if (turretCam)
-        {
-            cameraPoint.parent = turret;
-        }
-        else
-        {
-            cameraPoint.parent = this.transform;
-        }
-    }
+   
 }
