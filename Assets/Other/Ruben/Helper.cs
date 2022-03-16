@@ -2,27 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RMInputEventListener;
 
-[Serializable]
-public class Key
-{
-    public KeyCode code;
-    public bool state;
-    public Func<KeyCode, bool> func;
-    public Key(KeyCode c)
-    {
-        code = c;
-        state = false;
-        func = null;
-    }
-    public Key (KeyCode kc,Func<KeyCode,bool> f)
-    {
-        code = kc;
-        state = false;
-        func = f;
-    }
-    
-}
+/*
 public class KeyListener
 {
     [SerializeField] public List<Key> keys;
@@ -126,19 +108,23 @@ public class KeyListener
         return mouse;
     }
 }
+*/
 public class Helper : MonoBehaviour
 {
 
 
-    public KeyListener keyListener = new KeyListener();
+    public InputEventListener listener = new InputEventListener();
      
     void Start()
     {
-        keyListener.AddKeyCodeRange(KeyListener.Keypad());
-        Debug.Log("Keys in listener" + keyListener.keys.Count);
+        listener.listenTo(KeyCode.Keypad5,ChosenCallBack);
+        Debug.Log("Listener" + listener);
     }
 
-    
+    void ChosenCallBack(KeyCode keyCode)
+    {
+        Debug.Log("CallBack" + keyCode);
+    }
     void Update()
     {
         
@@ -150,5 +136,5 @@ public class Helper : MonoBehaviour
 
 
 
-
+    
 }
