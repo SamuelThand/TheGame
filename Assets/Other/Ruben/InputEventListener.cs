@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,22 +29,35 @@ namespace RMInputEventListener
     }
     public class InputEventListenerScanner : MonoBehaviour
     {
-        public List<Key> keys = new List<Key>();
-
+        public List<Key> keys;
+        public bool isScanning = true;
+        public List<KeyCode> keyList;
+        public List<bool> boolList;
+        string name;
         private void Start()
         {
-            
+            name = "scanner";
+            keys   = InputEventListener.MTListener.keys;
+            //keys = new List<Key>();
+            keyList  = new List<KeyCode>();  
+            boolList = new List<bool>();    
         }
         private void Update()
         {
-            scan();
+            if (isScanning)
+            {
+                Debug.Log("Scanning");
+                scan();
+            }
+
         }
+        
         public void scan()
         {
-            foreach (Key key in keys)
+            foreach (Key key in InputEventListener.MTListener.keys)
             {
                 bool result = key.func(key.code);
-                ;
+                Debug.Log("Checking:" + key.code + ":" + key.func(key.code));
                 if (result)
                 {
                     key.state = true;
@@ -51,40 +65,40 @@ namespace RMInputEventListener
                 }
             }
         }
+        public void Howl()
+        {
+            Debug.Log("I am a scanner:" + name);
+        }
     }
 
     public class InputEventListener
     {
         public List<Key> keys;
         private Dictionary<string, List<Key>> groups = new Dictionary<string, List<Key>>();
-        public List<KeyCode> keyList;
-        public List<bool> boolList;
-        private InputEventListenerScanner scanner;
-        //
+        
+        public InputEventListenerScanner scanner;
         static public InputEventListener MTListener;
+        //
+        public List<KeyCode> keyList = new List<KeyCode>();  
+        public List<bool> boolList = new List<bool>(); 
         public InputEventListener()
         {
-            keys = scanner.keys;
+            
+            keys = new List<Key>();
             groups.Add("All", new List<Key>());
             MTListener = this;
         }
-        public void listenToGroup(List<Key> keyGroup, Action<KeyCode>callback)
-        {
-
-        }
+        
         public void listenTo(KeyCode keyCode, Action<KeyCode> callback)
         {
+            Debug.Log("Listen to:" + keyCode);
             Key key = new Key(keyCode);
             key.callback = callback;
             keys.Add(key);
-            
+            Debug.Log("Key added. Singleton key count" + InputEventListener.MTListener.keys.Count);
+            KeyDisplay();
         }
-        public void listenTo(KeyCode keyCode, Action<KeyCode> callback, Func<KeyCode, bool> call)
-        {
-            Key key = new Key(keyCode, call);
-            key.callback = callback;
-            keys.Add(key);
-        }
+        
         
         public void Clear()
         {
@@ -96,18 +110,25 @@ namespace RMInputEventListener
                 }
             }
         }
-        void updateInspector()
+        public void KeyDisplay()
         {
-            List<KeyCode> codeInsp = new List<KeyCode>();
-            List<bool> boolInsp = new List<bool>();
-
+            keyList.Clear();
+            boolList.Clear();
             foreach (Key key in keys)
             {
-                codeInsp.Add(key.code);
-                boolInsp.Add((bool)key.state);
+                keyList.Add(key.code);
+                boolList.Add(key.state);
             }
         }
-      
+        static public void ActivateMTListener()
+        {
+            InputEventListener.MTListener = new InputEventListener();
+            //InputEventListener.MTListener.scanner.isScanning = true;
+        }
+        public void Howl()
+        {
+            Debug.Log("Im alive:" + this.keys.Count);
+        }
         /*
          * 
          *
@@ -170,6 +191,7 @@ namespace RMInputEventListener
             mouse.Add(KeyCode.Mouse0);
             mouse.Add(KeyCode.Mouse1);
             mouse.Add(KeyCode.Mouse2);
+            
             //
             return mouse;
         }
