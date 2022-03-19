@@ -45,11 +45,16 @@ public class Avatar : MonoBehaviour
         return FireWeapon(3);
     }
     */
-    
-    private void resetCoolDownForWeapon(int weapon)
+    private IEnumerator Stall(int weapon)
     {
+        yield return new WaitForSecondsRealtime((float)weaponCoolDown[weapon]);
         isWeaponCooling[weapon] = false;
         Debug.Log((weaponLabel)weapon + "  cooling ended");
+    }
+    private void startCoolingWeapon(int weapon)
+    {
+        StartCoroutine(Stall(weapon));
+        
     }
 
     // Fires chosen weapon if not cooling and starts cooldown. Returns if it was fired
@@ -64,7 +69,7 @@ public class Avatar : MonoBehaviour
             isWeaponCooling[weapon] = true;
             wasWeaponFired = true;
             string resetCoolDown = "resetCoolDownForWeapon(" + weapon + ")";
-            Invoke(resetCoolDown,weaponCoolDown[weapon]);
+            startCoolingWeapon(weapon); ;
             
         }
         else if (isWeaponCooling[weapon])

@@ -65,11 +65,11 @@ public class PlayerController : MonoBehaviour
         {
             dKeywasPressed = true;
         }
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             mouse0KeywasPressed = true;
         }
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             mouse1KeywasPressed = true;
         }
