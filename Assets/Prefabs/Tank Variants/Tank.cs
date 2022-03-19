@@ -19,12 +19,11 @@ public class Tank : Vehicle
 
 
     // Mouse rotation
-    Vector2 mouseRotation = Vector2.zero;
-    private float sensitivityX = 0.4f;
-    private float sensitivityY = 0.1f;
     
-    private float offsetX;
-    private float offsetY;
+    private float sensitivityX = 1.2f;
+    private float sensitivityY = 1.0f;
+    
+    private Vector2 mouseOffset = Vector2.zero;
 
     private float rotationX = 0f;
     private float rotationY = 0f;
@@ -37,8 +36,7 @@ public class Tank : Vehicle
     void Start()
     {
          
-        //offsetX = Input.GetAxis("Mouse X") * sensitivityX;
-        //offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
+        
 
     }
 
@@ -48,23 +46,22 @@ public class Tank : Vehicle
         // Turrent rotation = Z / forward
         // Cannon rotation  = X / right
 
-        //rotationX += (Input.GetAxis("Mouse X") * sensitivityX) - offsetX;
-        //rotationY += (Input.GetAxis("Mouse Y") * sensitivityY) - offsetY;
 
-        rotationX = (mousePosition.x * sensitivityX);
-        rotationY = (mousePosition.y * sensitivityY);
+        rotationX += (mousePosition.x * sensitivityX - mouseOffset.x);
+        rotationY += (mousePosition.y * sensitivityY - mouseOffset.y);
 
         // Uncomment for turret turning limit
         // rotationY = Mathf.Clamp(rotationY, MIN, MAX);
+        
         rotationY = Mathf.Clamp(rotationY, cannonMinAngle, cannonMaxAngle);
 
-
-        cannon.localEulerAngles = new Vector3(rotationY,cannon.localEulerAngles.y,cannon.localEulerAngles.z);
-        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y,rotationX-90);
+        
     }
     private void FixedUpdate()
     {
-
+        //Turret and Cannon chases "Camera" position here
+        cannon.localEulerAngles = new Vector3(rotationY,cannon.localEulerAngles.y,cannon.localEulerAngles.z);
+        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y,rotationX-90);
        
     }
     private void OnValidate()

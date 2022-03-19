@@ -25,8 +25,10 @@ public class PlayerController : MonoBehaviour
     private bool mouse1KeywasPressed;
 
     // 
-    private Vector3 mouseOffset;
-
+    public Vector3 mouseOffset;
+    public Vector3 mousePosition;
+    public float mouseX;
+    public float mouseY;
     // HUD
     [SerializeField] private string speedKMh;
     private double currentSpeed;
@@ -68,7 +70,10 @@ public class PlayerController : MonoBehaviour
         }
 
         // Mouse
-        avatar.SetMouse((Input.mousePosition - mouseOffset));
+        mousePosition.x = Input.GetAxis("Mouse X");
+        mousePosition.y = Input.GetAxis("Mouse Y");
+       
+        avatar.SetMouse(mousePosition);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
