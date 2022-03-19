@@ -45,6 +45,7 @@ public class Avatar : MonoBehaviour
         return FireWeapon(3);
     }
     */
+
     private IEnumerator Stall(int weapon)
     {
         yield return new WaitForSecondsRealtime((float)weaponCoolDown[weapon]);
@@ -54,7 +55,6 @@ public class Avatar : MonoBehaviour
     private void startCoolingWeapon(int weapon)
     {
         StartCoroutine(Stall(weapon));
-        
     }
 
     // Fires chosen weapon if not cooling and starts cooldown. Returns if it was fired
