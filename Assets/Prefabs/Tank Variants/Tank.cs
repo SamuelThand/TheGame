@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Tank : Vehicle
 {
+    // References
+    [Header("Tank")]
+    public Transform turret;
+    public Transform cannon;
+
+
     // Attributes
     public float turretSpeed = 1;
     public float cannonSpeed = 1;
@@ -11,10 +17,7 @@ public class Tank : Vehicle
     [SerializeField] private int cannonMaxAngle = 20;
     [SerializeField] bool turretCam;
 
-    // References
-    public Transform turret;
-    public Transform cannon;
-
+    
     // Mouse rotation
     Vector2 mouseRotation = Vector2.zero;
     private float sensitivityX = 1.2f;
@@ -36,7 +39,6 @@ public class Tank : Vehicle
          
         offsetX = Input.GetAxis("Mouse X") * sensitivityX;
         offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
-
 
     }
 

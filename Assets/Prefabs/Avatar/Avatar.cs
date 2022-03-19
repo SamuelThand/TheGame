@@ -9,8 +9,9 @@ public class Avatar : MonoBehaviour
     private enum weaponLabel { primary,secondary};
 
     // Refs
+    [Header("Avatar")]
     [SerializeReference] public Transform cameraPoint;
-    public PlayerController player;
+    
 
     // Attributes
     [Min(0)] public float weight = 1;
@@ -84,8 +85,7 @@ public class Avatar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Sets reference to avatar
-        player.avatar = this;
+        
     }
 
     // Update is called once per frame

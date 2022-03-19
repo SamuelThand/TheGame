@@ -8,9 +8,9 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     // Refs
-    public Avatar avatar;
-    Rigidbody playerBody;
-    public Transform cameraPoint;
+    public  Avatar avatar;
+    private Rigidbody playerBody;
+    private Transform cameraPoint;
     [SerializeReference] Camera playerCamera;
     
     
@@ -27,28 +27,24 @@ public class PlayerController : MonoBehaviour
 
     // HUD
     [SerializeField] private string speedKMh;
-    double currentSpeed;
+    private double currentSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
+        Cursor.lockState = (CursorLockMode)cursor;
+
     }
 
     // Update is called once per frame
     void Update()
     {   
-        Cursor.lockState = (CursorLockMode)cursor;
-        
-
-        
-
         // Sets camera to camerapoint in Avatar
         playerCamera.transform.SetPositionAndRotation(avatar.cameraPoint.position, avatar.cameraPoint.rotation);
-
         
-
+        // Keys
         if (Input.GetKey(KeyCode.W))
         {
             wKeywasPressed = true;
@@ -65,6 +61,8 @@ public class PlayerController : MonoBehaviour
         {
             dKeywasPressed = true;
         }
+
+        // Mouse
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             mouse0KeywasPressed = true;
@@ -81,7 +79,7 @@ public class PlayerController : MonoBehaviour
         
         // Logs the current speed in KM/h to the playerController
         speedKMh = "" + ((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
-        
+        // Keys
         if (wKeywasPressed)
         {
             if (!(currentSpeed >= avatar.topSpeed)) {
@@ -106,6 +104,7 @@ public class PlayerController : MonoBehaviour
             playerBody.transform.Rotate(Vector3.up, 0.7f * avatar.turnSpeed);
             dKeywasPressed = false;
         }
+        // Mouse
         if (mouse0KeywasPressed)
         {
             avatar.FirePrimary();
