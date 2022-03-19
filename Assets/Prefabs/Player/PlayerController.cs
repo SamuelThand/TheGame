@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool sKeywasPressed;
     private bool dKeywasPressed;
     private bool mouse0KeywasPressed;
+    private bool mouse1KeywasPressed;
 
 
     // HUD
@@ -64,7 +65,14 @@ public class PlayerController : MonoBehaviour
         {
             dKeywasPressed = true;
         }
-        //Cursor.lockState = CursorLockMode.Confined;
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            mouse0KeywasPressed = true;
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            mouse1KeywasPressed = true;
+        }
 
     }
     private void FixedUpdate()
@@ -98,7 +106,16 @@ public class PlayerController : MonoBehaviour
             playerBody.transform.Rotate(Vector3.up, 0.7f * avatar.turnSpeed);
             dKeywasPressed = false;
         }
-        
+        if (mouse0KeywasPressed)
+        {
+            avatar.FirePrimary();
+            mouse0KeywasPressed = false;
+        }
+        if (mouse1KeywasPressed)
+        {
+            avatar.FireSecondary();
+            mouse1KeywasPressed = false;
+        }
 
     }
     
