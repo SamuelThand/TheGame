@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private bool mouse0KeywasPressed;
     private bool mouse1KeywasPressed;
 
+    // 
+    private Vector3 mouseOffset;
 
     // HUD
     [SerializeField] private string speedKMh;
@@ -35,6 +37,9 @@ public class PlayerController : MonoBehaviour
         playerBody = avatar.GetComponent<Rigidbody>();
         cameraPoint = avatar.cameraPoint;
         Cursor.lockState = (CursorLockMode)cursor;
+        mouseOffset = Input.mousePosition;
+        //offsetX = Input.GetAxis("Mouse X");
+        //offsetY = Input.GetAxis("Mouse Y");
 
     }
 
@@ -63,6 +68,8 @@ public class PlayerController : MonoBehaviour
         }
 
         // Mouse
+        avatar.SetMouse((Input.mousePosition - mouseOffset));
+
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             mouse0KeywasPressed = true;

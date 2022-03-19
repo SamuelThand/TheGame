@@ -45,9 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 0}
-  cameraPoint: {fileID: 0}
   playerCamera: {fileID: 503166768875638259}
-  cursor: 2
+  cursor: 1
   lockState: 
   speedKMh: 
 --- !u!1 &7999874936966661985

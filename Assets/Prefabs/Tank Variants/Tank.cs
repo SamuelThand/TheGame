@@ -17,11 +17,11 @@ public class Tank : Vehicle
     [SerializeField] private int cannonMaxAngle = 20;
     [SerializeField] bool turretCam;
 
-    
+
     // Mouse rotation
     Vector2 mouseRotation = Vector2.zero;
-    private float sensitivityX = 1.2f;
-    private float sensitivityY = 1.0f;
+    private float sensitivityX = 0.4f;
+    private float sensitivityY = 0.1f;
     
     private float offsetX;
     private float offsetY;
@@ -37,8 +37,8 @@ public class Tank : Vehicle
     void Start()
     {
          
-        offsetX = Input.GetAxis("Mouse X") * sensitivityX;
-        offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
+        //offsetX = Input.GetAxis("Mouse X") * sensitivityX;
+        //offsetY = Input.GetAxis("Mouse Y") * sensitivityY;
 
     }
 
@@ -48,8 +48,11 @@ public class Tank : Vehicle
         // Turrent rotation = Z / forward
         // Cannon rotation  = X / right
 
-        rotationX += (Input.GetAxis("Mouse X") * sensitivityX) - offsetX;
-        rotationY += (Input.GetAxis("Mouse Y") * sensitivityY) - offsetY;
+        //rotationX += (Input.GetAxis("Mouse X") * sensitivityX) - offsetX;
+        //rotationY += (Input.GetAxis("Mouse Y") * sensitivityY) - offsetY;
+
+        rotationX = (mousePosition.x * sensitivityX);
+        rotationY = (mousePosition.y * sensitivityY);
 
         // Uncomment for turret turning limit
         // rotationY = Mathf.Clamp(rotationY, MIN, MAX);

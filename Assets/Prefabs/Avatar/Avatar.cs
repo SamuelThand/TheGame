@@ -11,7 +11,7 @@ public class Avatar : MonoBehaviour
     // Refs
     [Header("Avatar")]
     [SerializeReference] public Transform cameraPoint;
-    
+    public Vector2 mousePosition;
 
     // Attributes
     [Min(0)] public float weight = 1;
@@ -26,7 +26,16 @@ public class Avatar : MonoBehaviour
 
 
 
+    public void SetMouse(Vector3 mp)
+    {
+        mousePosition = mp;
+        
+    }
+    
+    public void SetMove()
+    {
 
+    }
 
     public bool FirePrimary()
     {
@@ -46,6 +55,8 @@ public class Avatar : MonoBehaviour
         return FireWeapon(3);
     }
     */
+
+    //yield causes delay before continuing
     private IEnumerator Stall(int weapon)
     {
         yield return new WaitForSecondsRealtime((float)weaponCoolDown[weapon]);
