@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private CursorLockMode cursor;
     public string lockState;
+
     // Keypress variables
     private bool wKeywasPressed;
     private bool aKeywasPressed;
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 mousePosition;
     public float mouseX;
     public float mouseY;
+    public Vector2 mouseScrollDelta;
+
     // HUD
     [SerializeField] private string speedKMh;
     private double currentSpeed;
@@ -72,8 +75,10 @@ public class PlayerController : MonoBehaviour
         // Mouse
         mousePosition.x = Input.GetAxis("Mouse X");
         mousePosition.y = Input.GetAxis("Mouse Y");
-       
         avatar.SetMouse(mousePosition);
+
+        mouseScrollDelta = Input.mouseScrollDelta;
+        avatar.SetScrollDelta(mouseScrollDelta);
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -83,7 +88,6 @@ public class PlayerController : MonoBehaviour
         {
             mouse1KeywasPressed = true;
         }
-
     }
     private void FixedUpdate()
     {
@@ -127,7 +131,5 @@ public class PlayerController : MonoBehaviour
             avatar.FireSecondary();
             mouse1KeywasPressed = false;
         }
-
     }
-    
 }

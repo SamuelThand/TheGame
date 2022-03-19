@@ -31,7 +31,10 @@ public class Avatar : MonoBehaviour
         mousePosition = mp;
         
     }
-    
+    public void SetScrollDelta(Vector2 sd)
+    {
+        cameraPoint.Translate(Vector3.forward*sd.y);
+    }
     public void SetMove()
     {
 
