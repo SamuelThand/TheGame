@@ -28,8 +28,9 @@ public class Tank : Vehicle
         
         //cameraPoint.parent = turret;
         cameraPoint.parent = cannon;
+        primaryWeaponPoint.parent = cannon;
         secondaryWeaponPoint.parent = turret;
-        weapons[0] = Instantiate(weapons[0]);
+        weapons[0] = Instantiate(weapons[0],primaryWeaponPoint.position,primaryWeaponPoint.rotation,primaryWeaponPoint);
         weapons[1] = Instantiate(weapons[1],secondaryWeaponPoint.position, secondaryWeaponPoint.rotation, secondaryWeaponPoint);
         
         //weapons[1].transform.SetPositionAndRotation(secondaryWeaponPoint.position, turret.rotation);

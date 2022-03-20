@@ -8,6 +8,7 @@ public class Vehicle : Avatar
     // Refs
     [Header("Vehicle")]
     [SerializeReference] public Color paint;
+    [SerializeReference] public Transform primaryWeaponPoint;
     [SerializeReference] public Transform secondaryWeaponPoint;
 
 
