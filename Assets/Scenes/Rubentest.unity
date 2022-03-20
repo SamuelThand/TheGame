@@ -145,10 +145,6 @@ PrefabInstance:
       propertyPath: avatar
       value: 
       objectReference: {fileID: 740686038}
-    - target: {fileID: 4151453213039695575, guid: 422b5cb637c31df308ee63d27f512256, type: 3}
-      propertyPath: cursor
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4181638027675787997, guid: 422b5cb637c31df308ee63d27f512256, type: 3}
       propertyPath: m_Name
       value: Player
@@ -299,6 +295,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2988078012683332590, guid: 1a03865fce5eb194cb758f3dfbf6bc19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5067514801509449160, guid: 1a03865fce5eb194cb758f3dfbf6bc19, type: 3}
       propertyPath: m_RootOrder
       value: 1

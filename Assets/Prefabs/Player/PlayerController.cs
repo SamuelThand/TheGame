@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         mouseScrollDelta = Input.mouseScrollDelta;
         avatar.SetScrollDelta(mouseScrollDelta);
-
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             mouse0KeywasPressed = true;
@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
         
         // Logs the current speed in KM/h to the playerController
         speedKMh = "" + ((Math.Round(playerBody.velocity.magnitude * 3.6)) + "Km/h");
+
         // Keys
         if (wKeywasPressed)
         {
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
             playerBody.transform.Rotate(Vector3.up, 0.7f * avatar.turnSpeed);
             dKeywasPressed = false;
         }
+
         // Mouse
         if (mouse0KeywasPressed)
         {
