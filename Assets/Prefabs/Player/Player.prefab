@@ -48,6 +48,11 @@ MonoBehaviour:
   playerCamera: {fileID: 503166768875638259}
   cursor: 1
   lockState: 
+  mouseOffset: {x: 0, y: 0, z: 0}
+  mousePosition: {x: 0, y: 0, z: 0}
+  mouseX: 0
+  mouseY: 0
+  mouseScrollDelta: {x: 0, y: 0}
   speedKMh: 
 --- !u!1 &7999874936966661985
 GameObject:

@@ -11,7 +11,7 @@ public class Avatar : MonoBehaviour
     // Refs
     [Header("Avatar")]
     [SerializeReference] public Transform cameraPoint;
-    public Vector2 mousePosition;
+    public Vector2 mousePitchYaw;
 
     // Attributes
     [Min(0)] public float weight = 1;
@@ -19,6 +19,14 @@ public class Avatar : MonoBehaviour
     [Min(0)] public float turnSpeed = 1;
     [Min(0)] public float accelerationSpeed = 1;
 
+    // Mouse rotation
+    private float sensitivityX = 1.2f;
+    private float sensitivityY = 1.0f;
+
+    private Vector2 mouseOffset = Vector2.zero;
+
+    private float rotationX = 0f;
+    private float rotationY = 0f;
 
     // As different ammo eventually is developed theese variable will become obsolete
     private  int[] weaponCoolDown  = { 10, 5 };
@@ -28,7 +36,8 @@ public class Avatar : MonoBehaviour
 
     public void SetMouse(Vector3 mp)
     {
-        mousePosition = mp;
+        mousePitchYaw.x += mp.x * sensitivityX - mouseOffset.x;
+        mousePitchYaw.y += mp.y * sensitivityY - mouseOffset.y;
         
     }
     public void SetScrollDelta(Vector2 sd)
@@ -39,7 +48,6 @@ public class Avatar : MonoBehaviour
     {
 
     }
-
     public bool FirePrimary()
     {
         return FireWeapon(0);
@@ -89,7 +97,7 @@ public class Avatar : MonoBehaviour
         }
         else if (isWeaponCooling[weapon])
         {
-            // Dont fire.
+            // Dont fire, still cooling.
             Debug.Log((weaponLabel)weapon + " is still cooling");
             wasWeaponFired = false;
         }
