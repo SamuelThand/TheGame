@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     // Refs
     public WeaponTypes type;
     [SerializeReference] private Transform ammoSpawnPoint;
+    public Avatar shooter;
 
     //Sound
     private Transform weaponPoint;
@@ -18,9 +19,11 @@ public class Weapon : MonoBehaviour
 
     // Attributes
     public float coolDown;
-    public float range;
+    public float range;                                 // 1100
     public Ammo ammunition;
-    private int rpm;
+    private int rpm;                                    // 600
+    [SerializeField] private int clipSize;
+    [SerializeField] private float reloadTime;
     [SerializeReference] public bool _isCooling = false;
     public int coolingTimer;
 
@@ -38,10 +41,10 @@ public class Weapon : MonoBehaviour
             if (value)
             {
                 coolingTimer = (int)Mathf.Round(coolDown * 100);
-                Debug.Log((WeaponTypes)type + ":Boom");
                 Invoke("resetCooling",coolDown);
                 // Instantiate projectile
                 Ammo shot = Instantiate(ammunition,ammoSpawnPoint.position, ammoSpawnPoint.rotation);
+                shot.shooter = shooter;
                 //shot.GetComponent<Rigidbody>().AddForce(shot.transform.forward * ammunition.velocity,ForceMode.VelocityChange);
                 shot.GetComponent<Rigidbody>().mass = ammunition.mass;
                 shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * ammunition.velocity;

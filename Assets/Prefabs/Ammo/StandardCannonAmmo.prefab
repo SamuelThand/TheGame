@@ -80,6 +80,22 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.g
+      value: 0.079761535
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
       propertyPath: velocity
       value: 200
       objectReference: {fileID: 0}

@@ -108,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2279016667653970944, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3914717560457243508, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
       propertyPath: m_RootOrder
@@ -154,6 +154,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6454773734730697559, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: m_Mass
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454773734730697559, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454773734730697559, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7073119827079777509, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -171,8 +183,28 @@ PrefabInstance:
       value: 2.68
       objectReference: {fileID: 0}
     - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.g
+      value: 0.8973636
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734022239127261643, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
       propertyPath: velocity
-      value: 100
+      value: 853
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155844320533366158, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e82d134c7434b7449efa1f8d5d8e221, type: 3}

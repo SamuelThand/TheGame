@@ -5,13 +5,17 @@ using UnityEngine;
 public class Ammo : MonoBehaviour
 {
     // Refs
+    public Avatar shooter;
     // Sound
 
     // Attributes
     public float damage;
     public float piercing;
-    public float velocity;
-    public float mass;
+    public float velocity;                          //853
+    public float mass;                              //0.010
+    [SerializeReference] public Light glow;
+    [SerializeReference] public TrailRenderer trail;
+    [SerializeReference] public Color color;
 
 
     private void DeleteMe()
@@ -21,6 +25,9 @@ public class Ammo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        glow.color = color;
+        trail.startColor = color;
+        trail.endColor = new Color(1.0f, 1.0f, 1.0f,0.0f);
         Invoke("DeleteMe", 5f);
     }
 
@@ -28,5 +35,10 @@ public class Ammo : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        color = new Color(0.0f, 0.0f, 1.0f,1.0f);
+        Debug.Log("Collision");
     }
 }

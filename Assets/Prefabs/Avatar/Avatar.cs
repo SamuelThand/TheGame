@@ -71,12 +71,10 @@ public class Avatar : MonoBehaviour
     public bool FireWeapon(int weapon)
     {
         bool cooling = weapons[weapon].IsCooling;
-        Debug.Log("Fire? - " + cooling);
         bool wasWeaponFired = false; // !weapons[weapon].IsCooling;
         if (!weapons[weapon].IsCooling)
         {
             // Fire!
-            Debug.Log("Weaponn will fire");
             weapons[weapon].IsCooling = true;
         }
         else if (weapons[weapon].IsCooling)
