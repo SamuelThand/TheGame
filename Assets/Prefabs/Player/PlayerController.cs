@@ -80,12 +80,14 @@ public class PlayerController : MonoBehaviour
         mouseScrollDelta = Input.mouseScrollDelta;
         avatar.SetScrollDelta(mouseScrollDelta);
         
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
+            avatar.FirePrimary();
             mouse0KeywasPressed = true;
         }
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
+            avatar.FireSecondary();
             mouse1KeywasPressed = true;
         }
     }
@@ -122,16 +124,6 @@ public class PlayerController : MonoBehaviour
             dKeywasPressed = false;
         }
 
-        // Mouse
-        if (mouse0KeywasPressed)
-        {
-            avatar.FirePrimary();
-            mouse0KeywasPressed = false;
-        }
-        if (mouse1KeywasPressed)
-        {
-            avatar.FireSecondary();
-            mouse1KeywasPressed = false;
-        }
+        
     }
 }

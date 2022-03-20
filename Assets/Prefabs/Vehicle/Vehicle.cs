@@ -7,8 +7,14 @@ public class Vehicle : Avatar
 {
     // Refs
     [Header("Vehicle")]
-    public Color paint;
+    [SerializeReference] public Color paint;
     [SerializeReference] public Transform secondaryWeaponPoint;
+
+
+
+    
+
+
 
     // Start is called before the first frame update
     void Start()

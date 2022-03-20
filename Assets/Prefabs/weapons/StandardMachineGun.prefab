@@ -203,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: coolDown
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: ammunition
@@ -212,6 +212,18 @@ PrefabInstance:
     - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: coolingTimer
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253100287156013372, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253100287156013372, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.224
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253100287156013372, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.041
       objectReference: {fileID: 0}
     - target: {fileID: 6450181709805183577, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: m_RootOrder
@@ -231,11 +243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6450181709805183577, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6450181709805183577, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 0.0000009536742
       objectReference: {fileID: 0}
     - target: {fileID: 6450181709805183577, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: m_LocalRotation.y

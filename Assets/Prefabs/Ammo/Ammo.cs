@@ -9,14 +9,19 @@ public class Ammo : MonoBehaviour
 
     // Attributes
     public float damage;
-    public float armorDamage;
-    public float speed;
-    public float weight;
+    public float piercing;
+    public float velocity;
+    public float mass;
 
+
+    private void DeleteMe()
+    {
+        Destroy(this.gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        Invoke("DeleteMe", 5f);
     }
 
     // Update is called once per frame

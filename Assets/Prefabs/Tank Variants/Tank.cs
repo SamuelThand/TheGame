@@ -8,7 +8,8 @@ public class Tank : Vehicle
     [Header("Tank")]
     public Transform turret;
     public Transform cannon;
-
+    [SerializeReference] int primaryTemp;
+    [SerializeReference] int secondaryTemp;
 
     // Attributes
     public float turretSpeed = 1;
@@ -24,31 +25,32 @@ public class Tank : Vehicle
     // Start is called before the first frame update
     void Start()
     {
+        
         //cameraPoint.parent = turret;
         cameraPoint.parent = cannon;
-        weapons[1] = Instantiate(weapons[1]);
-        weapons[1].transform.SetPositionAndRotation(secondaryWeaponPoint.position, turret.rotation);
+        secondaryWeaponPoint.parent = turret;
+        weapons[0] = Instantiate(weapons[0]);
+        weapons[1] = Instantiate(weapons[1],secondaryWeaponPoint.position, secondaryWeaponPoint.rotation, secondaryWeaponPoint);
+        
+        //weapons[1].transform.SetPositionAndRotation(secondaryWeaponPoint.position, turret.rotation);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Turrent rotation = Z / forward
-        // Cannon rotation  = X / right
-
-        // Turret rotation limit
-        // rotationY = Mathf.Clamp(rotationY, MIN, MAX);
+        primaryTemp = weapons[0].coolingTimer;
+        secondaryTemp = weapons[1].coolingTimer;
         
-        // Cannon inclination limit
+        // Set limits
         mousePitchYaw.y = Mathf.Clamp(mousePitchYaw.y, cannonMinAngle, cannonMaxAngle);
-
+        //mousePitchYaw.x = Mathf.Clamp(mousePitchYaw.x, MIN, MAX);
         
     }
     private void FixedUpdate()
     {
         //Turret and Cannon chases "Camera" position here
         cannon.localEulerAngles = new Vector3(mousePitchYaw.y, cannon.localEulerAngles.y,cannon.localEulerAngles.z);
-        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,mousePitchYaw.x - 90,turret.localEulerAngles.z );
+        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,mousePitchYaw.x,turret.localEulerAngles.z );
         
        
     }

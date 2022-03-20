@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
 
     // Refs
     public WeaponTypes type;
+    [SerializeReference] private Transform ammoSpawnPoint;
 
     //Sound
     private Transform weaponPoint;
@@ -19,6 +20,7 @@ public class Weapon : MonoBehaviour
     public float coolDown;
     public float range;
     public Ammo ammunition;
+    private int rpm;
     [SerializeReference] public bool _isCooling = false;
     public int coolingTimer;
 
@@ -38,6 +40,9 @@ public class Weapon : MonoBehaviour
                 coolingTimer = (int)Mathf.Round(coolDown * 100);
                 Debug.Log((WeaponTypes)type + ":Boom");
                 Invoke("resetCooling",coolDown);
+                // Instantiate projectile
+                Ammo shot = Instantiate(ammunition,ammoSpawnPoint.position, ammoSpawnPoint.rotation);
+                shot.GetComponent<Rigidbody>().AddForce(shot.transform.forward * ammunition.velocity,ForceMode.VelocityChange);
                 
             }
         }
@@ -46,10 +51,7 @@ public class Weapon : MonoBehaviour
     {
         IsCooling = false;
     }
-    public void ReduceTimer()
-    {
-
-    }
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +66,10 @@ public class Weapon : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.Log("FixedUpdate");
+        if(coolingTimer > 0)
+        {
+            coolingTimer--;
+        }
     }
     public Ammo SetAmmunition(Ammo a)
     {
@@ -72,17 +77,4 @@ public class Weapon : MonoBehaviour
         this.ammunition = a;
         return oldAmmo;
     }
-    /*
-    // "yield" causes delay before continuing
-    static private IEnumerator Stall(int weapon)
-    {
-        yield return new WaitForSecondsRealtime(weapons[weapon].coolDown);
-        weapons[weapon].isCooling = false;
-        Debug.Log((WeaponLabel)weapon + "  cooling ended");
-    }
-    static private void startCoolingWeapon(int weapon)
-    {
-        StartCoroutine(Stall(weapon));
-    }
-    */
 }
