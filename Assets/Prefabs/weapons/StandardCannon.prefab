@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: ammunition
       value: 
       objectReference: {fileID: 3991566668015686133, guid: 9058d381dcf96e546bcf93fcd41a2970, type: 3}
+    - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
+      propertyPath: coolingTimer
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6450181709805183577, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: m_RootOrder
       value: 0

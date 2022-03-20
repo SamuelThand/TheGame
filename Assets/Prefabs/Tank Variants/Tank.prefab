@@ -92,16 +92,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b8b156f46466b49a5af08c4378c2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraPoint: {fileID: 3526646363202837560}
+  mousePitchYaw: {x: 0, y: 0}
+  weapons: []
   weight: 1
   topSpeed: 1
   turnSpeed: 1
   accelerationSpeed: 1
-  cameraPoint: {fileID: 3526646363202837560}
-  player: {fileID: 0}
-  turretSpeed: 1
-  cannonSpeed: 1
-  cannonMinAngle: -5
-  cannonMaxAngle: 20
+  paint: {r: 0, g: 0, b: 0, a: 0}
   turret: {fileID: 0}
   cannon: {fileID: 0}
-  distanceFromAvatar: 1
+  turretSpeed: 1
+  cannonSpeed: 1
+  cannonMinAngle: -15
+  cannonMaxAngle: 3
+  turretCam: 0

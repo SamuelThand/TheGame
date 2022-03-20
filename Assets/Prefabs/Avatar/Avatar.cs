@@ -6,7 +6,7 @@ using UnityEngine;
 public class Avatar : MonoBehaviour
 {
     //
-    private enum WeaponLabel { primary,secondary};
+    
 
     // Refs
     [Header("Avatar")]
@@ -34,7 +34,7 @@ public class Avatar : MonoBehaviour
     public void SetMouse(Vector3 mp)
     {
         mousePitchYaw.x += mp.x * sensitivityX - mouseOffset.x;
-        mousePitchYaw.y += mp.y * sensitivityY - mouseOffset.y;
+        mousePitchYaw.y += (mp.y*-1) * sensitivityY - mouseOffset.y;
         
     }
     public void SetScrollDelta(Vector2 sd)
@@ -64,38 +64,24 @@ public class Avatar : MonoBehaviour
     }
     */
 
-    // "yield" causes delay before continuing
-    private IEnumerator Stall(int weapon)
-    {
-        yield return new WaitForSecondsRealtime(weapons[weapon].coolDown);
-        weapons[weapon].isCooling = false;
-        Debug.Log((WeaponLabel)weapon + "  cooling ended");
-    }
-    private void startCoolingWeapon(int weapon)
-    {
-        StartCoroutine(Stall(weapon));
-    }
+    
+   
 
     // Fires chosen weapon if not cooling and starts cooldown. Returns if it was fired
     public bool FireWeapon(int weapon)
     {
-
-        bool wasWeaponFired = false;
-        if (!weapons[weapon].isCooling)
+        bool cooling = weapons[weapon].IsCooling;
+        Debug.Log("Fire? - " + cooling);
+        bool wasWeaponFired = false; // !weapons[weapon].IsCooling;
+        if (!weapons[weapon].IsCooling)
         {
             // Fire!
-            Debug.Log((WeaponLabel)weapon + " will fire with " + weapons[weapon].coolDown + "s of cooldown");
-            weapons[weapon].isCooling = true;
-            wasWeaponFired = true;
-            string resetCoolDown = "resetCoolDownForWeapon(" + weapon + ")";
-            startCoolingWeapon(weapon); ;
-            
+            Debug.Log("Weaponn will fire");
+            weapons[weapon].IsCooling = true;
         }
-        else if (weapons[weapon].isCooling)
+        else if (weapons[weapon].IsCooling)
         {
             // Dont fire, still cooling.
-            Debug.Log((WeaponLabel)weapon + " is still cooling");
-            wasWeaponFired = false;
         }
         return wasWeaponFired;
     }

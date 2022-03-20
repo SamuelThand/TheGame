@@ -13,8 +13,8 @@ public class Tank : Vehicle
     // Attributes
     public float turretSpeed = 1;
     public float cannonSpeed = 1;
-    [SerializeField] private int cannonMinAngle = -5;
-    [SerializeField] private int cannonMaxAngle = 20;
+    [SerializeField] private int cannonMinAngle;
+    [SerializeField] private int cannonMaxAngle;
     [SerializeField] bool turretCam;
 
     
@@ -24,7 +24,8 @@ public class Tank : Vehicle
     // Start is called before the first frame update
     void Start()
     {
-        cameraPoint.parent = turret;
+        //cameraPoint.parent = turret;
+        cameraPoint.parent = cannon;
 
     }
 
