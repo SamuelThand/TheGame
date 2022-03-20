@@ -42,8 +42,9 @@ public class Weapon : MonoBehaviour
                 Invoke("resetCooling",coolDown);
                 // Instantiate projectile
                 Ammo shot = Instantiate(ammunition,ammoSpawnPoint.position, ammoSpawnPoint.rotation);
-                shot.GetComponent<Rigidbody>().AddForce(shot.transform.forward * ammunition.velocity,ForceMode.VelocityChange);
-                
+                //shot.GetComponent<Rigidbody>().AddForce(shot.transform.forward * ammunition.velocity,ForceMode.VelocityChange);
+                shot.GetComponent<Rigidbody>().mass = ammunition.mass;
+                shot.GetComponent<Rigidbody>().velocity = shot.transform.forward * ammunition.velocity;
             }
         }
     }
