@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     public float coolDown;
     public float range;
     public Ammo ammunition;
-    public bool _isCooling = false;
+    [SerializeReference] public bool _isCooling = false;
     public int coolingTimer;
 
     // Getter Setter
@@ -38,6 +38,7 @@ public class Weapon : MonoBehaviour
                 coolingTimer = (int)Mathf.Round(coolDown * 100);
                 Debug.Log((WeaponTypes)type + ":Boom");
                 Invoke("resetCooling",coolDown);
+                
             }
         }
     }
@@ -45,10 +46,15 @@ public class Weapon : MonoBehaviour
     {
         IsCooling = false;
     }
+    public void ReduceTimer()
+    {
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        _isCooling = false;
+        IsCooling = false;
+
     }
 
     // Update is called once per frame
@@ -58,11 +64,7 @@ public class Weapon : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(coolingTimer > 0)
-        {
-            coolingTimer--;
-            
-        }Debug.Log((WeaponTypes)type + ":" + coolingTimer);
+        Debug.Log("FixedUpdate");
     }
     public Ammo SetAmmunition(Ammo a)
     {

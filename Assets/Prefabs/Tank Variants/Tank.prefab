@@ -80,6 +80,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4037041311273020911, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
   m_PrefabInstance: {fileID: 646083479337021911}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2224135799325264906 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1597350950230736349, guid: 9bab42a687424a140acaf8fcc817aa9f, type: 3}
+  m_PrefabInstance: {fileID: 646083479337021911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2994037494398874766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +104,8 @@ MonoBehaviour:
   topSpeed: 1
   turnSpeed: 1
   accelerationSpeed: 1
-  paint: {r: 0, g: 0, b: 0, a: 0}
+  paint: {r: 0.13937344, g: 0.33962262, b: 0.13937344, a: 1}
+  secondaryWeaponPoint: {fileID: 2224135799325264906}
   turret: {fileID: 0}
   cannon: {fileID: 0}
   turretSpeed: 1

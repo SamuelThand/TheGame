@@ -26,7 +26,8 @@ public class Tank : Vehicle
     {
         //cameraPoint.parent = turret;
         cameraPoint.parent = cannon;
-
+        weapons[1] = Instantiate(weapons[1]);
+        weapons[1].transform.SetPositionAndRotation(secondaryWeaponPoint.position, turret.rotation);
     }
 
     // Update is called once per frame
@@ -47,7 +48,7 @@ public class Tank : Vehicle
     {
         //Turret and Cannon chases "Camera" position here
         cannon.localEulerAngles = new Vector3(mousePitchYaw.y, cannon.localEulerAngles.y,cannon.localEulerAngles.z);
-        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y, mousePitchYaw.x + 90);
+        turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,mousePitchYaw.x - 90,turret.localEulerAngles.z );
         
        
     }
