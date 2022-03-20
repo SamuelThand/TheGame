@@ -6,7 +6,7 @@ using UnityEngine;
 public class Avatar : MonoBehaviour
 {
     //
-    private enum weaponLabel { primary,secondary};
+    private enum WeaponLabel { primary,secondary};
 
     // Refs
     [Header("Avatar")]
@@ -22,11 +22,7 @@ public class Avatar : MonoBehaviour
     // Mouse rotation
     private float sensitivityX = 1.2f;
     private float sensitivityY = 1.0f;
-
     private Vector2 mouseOffset = Vector2.zero;
-
-    private float rotationX = 0f;
-    private float rotationY = 0f;
 
     // As different ammo eventually is developed theese variable will become obsolete
     private  int[] weaponCoolDown  = { 10, 5 };
@@ -72,7 +68,7 @@ public class Avatar : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime((float)weaponCoolDown[weapon]);
         isWeaponCooling[weapon] = false;
-        Debug.Log((weaponLabel)weapon + "  cooling ended");
+        Debug.Log((WeaponLabel)weapon + "  cooling ended");
     }
     private void startCoolingWeapon(int weapon)
     {
@@ -88,7 +84,7 @@ public class Avatar : MonoBehaviour
         if (!isWeaponCooling[weapon])
         {
             // Fire!
-            Debug.Log((weaponLabel)weapon + " will fire");
+            Debug.Log((WeaponLabel)weapon + " will fire");
             isWeaponCooling[weapon] = true;
             wasWeaponFired = true;
             string resetCoolDown = "resetCoolDownForWeapon(" + weapon + ")";
@@ -98,7 +94,7 @@ public class Avatar : MonoBehaviour
         else if (isWeaponCooling[weapon])
         {
             // Dont fire, still cooling.
-            Debug.Log((weaponLabel)weapon + " is still cooling");
+            Debug.Log((WeaponLabel)weapon + " is still cooling");
             wasWeaponFired = false;
         }
         return wasWeaponFired;

@@ -7,7 +7,7 @@ public class Vehicle : Avatar
 {
     // Refs
     [Header("Vehicle")]
-    public Color paint;
+    public Color paint; 
 
 
     // Start is called before the first frame update

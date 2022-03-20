@@ -19,7 +19,6 @@ public class Tank : Vehicle
 
     
 
-    // Logs
     
 
     // Start is called before the first frame update
@@ -39,9 +38,10 @@ public class Tank : Vehicle
         ////rotationX += (mousePosition.x * sensitivityX - mouseOffset.x);
        //// rotationY += (mousePosition.y * sensitivityY - mouseOffset.y);
 
-        // Uncomment for turret turning limit
+        // Turret rotation limit
         // rotationY = Mathf.Clamp(rotationY, MIN, MAX);
         
+        // Cannon inclination limit
         mousePitchYaw.y = Mathf.Clamp(mousePitchYaw.y, cannonMinAngle, cannonMaxAngle);
 
         
@@ -51,6 +51,7 @@ public class Tank : Vehicle
         //Turret and Cannon chases "Camera" position here
         cannon.localEulerAngles = new Vector3(mousePitchYaw.y, cannon.localEulerAngles.y,cannon.localEulerAngles.z);
         turret.localEulerAngles = new Vector3(turret.localEulerAngles.x,turret.localEulerAngles.y, mousePitchYaw.x - 90);
+        
        
     }
     private void OnValidate()
