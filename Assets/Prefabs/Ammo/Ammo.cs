@@ -13,6 +13,7 @@ public class Ammo : MonoBehaviour
     public float piercing;
     public float velocity;                          //853
     public float mass;                              //0.010
+
     [SerializeReference] public Light glow;
     [SerializeReference] public TrailRenderer trail;
     [SerializeReference] public Color color;
@@ -38,7 +39,11 @@ public class Ammo : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        color = new Color(0.0f, 0.0f, 1.0f,1.0f);
-        Debug.Log("Collision");
+        
+        
+            color = new Color(0.0f, 0.0f, 1.0f,1.0f);
+            //GetComponent<Rigidbody>().velocity *= 0.2f; 
+            Debug.Log("Collision");
+        
     }
 }
