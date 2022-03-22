@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: coolDown
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5570700927092071816, guid: 4258b7b39afb6a048b54db743de08e37, type: 3}
       propertyPath: ammunition

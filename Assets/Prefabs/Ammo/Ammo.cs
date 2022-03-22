@@ -29,7 +29,7 @@ public class Ammo : MonoBehaviour
         glow.color = color;
         trail.startColor = color;
         trail.endColor = new Color(1.0f, 1.0f, 1.0f,0.0f);
-        Invoke("DeleteMe", 5f);
+        
     }
 
     // Update is called once per frame
@@ -39,11 +39,11 @@ public class Ammo : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
-        
-            color = new Color(0.0f, 0.0f, 1.0f,1.0f);
-            //GetComponent<Rigidbody>().velocity *= 0.2f; 
-            Debug.Log("Collision");
+      
+        Invoke("DeleteMe", 1f);
+        color = new Color(0.0f, 0.0f, 1.0f,1.0f);
+        GetComponent<Rigidbody>().velocity *= 0.6f; 
+        Debug.Log("Collision:" + this.GetType());
         
     }
 }
