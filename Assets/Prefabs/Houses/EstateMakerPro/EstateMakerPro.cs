@@ -32,10 +32,12 @@ public class EstateMakerPro : MonoBehaviour
         fronts = shops.Concat<GameObject>(fillers).ToArray<GameObject>();
         positionFootprint();
         PlaceCornerShops();
-        placeSide(nw,0);
-        //placeSide(ne,180);
-        //placeSide(sw,-90);
-        //placeSide(se,90);
+        
+        placeSide(nw,sw);
+        placeSide(ne,nw);
+        
+        placeSide(sw,se);
+        placeSide(se,ne);
      
         //GetCorners();
     }
@@ -64,40 +66,55 @@ public class EstateMakerPro : MonoBehaviour
         //Debug.Log("random = " + rand);
         return Instantiate(cornerShops[3],this.transform);
     }
-    private void placeSide(GameObject starter,int rot)
+    private void placeSide(GameObject start,GameObject end)
     {
-        int constructed = 0;
-        int remainder = northSide-constructed;
-        int offset = 0;
-        int rand = 0;
-        GameObject preShop = starter;
-        Debug.Log("Mini:" + fillers[2].GetComponent<Renderer>().bounds.size.x);
+        float xSize = (end.transform.position.x - start.transform.position.x);
+        float zSize = (end.transform.position.z - start.transform.position.z);
+        float sSize = (end.GetComponent<Renderer>().bounds.size.x + start.GetComponent<Renderer>().bounds.size.x);
+        int remainder = (int)Mathf.Round(Mathf.Abs(xSize + zSize) - sSize);
+        
+        Debug.Log("xS:" + xSize);
+        Debug.Log("zS:" + zSize);
+        Debug.Log("sS:" + sSize);
+       
+        
+
+        Debug.Log("Start remainder:" + remainder);
+        
+        GameObject preShop = start;
+        
         int limit = 0;
-        while (limit < 1)
+        int offset = (int)start.GetComponent<MeshFilter>().mesh.bounds.size.x;
+        while (remainder > 0)
         {
-            offset = (int)preShop.GetComponent<Renderer>().bounds.size.x;
+            
             bool fits = false;
             
             while (!fits)
             {
-                rand = Random.Range(0, fronts.Length);
+                int rand = Random.Range(0, fronts.Length);
                 
                 if((int)Mathf.Round(fronts[rand].GetComponent<Renderer>().bounds.size.x) <= remainder)
                 {
-                    GameObject aShop = Instantiate(fronts[rand],preShop.transform);
+                    int shopSize = (int)(fronts[rand].GetComponent<Renderer>().bounds.size.x);
+                    GameObject aShop = Instantiate(fronts[rand],preShop.transform.position,preShop.transform.rotation,preShop.transform);
                     
-                    aShop.transform.position = new Vector3(preShop.transform.position.x + offset, preShop.transform.position.y, preShop.transform.position.z);
-                    //aShop.transform.Rotate(new Vector3(0,rot,0));
-                    constructed += (int)aShop.GetComponent<Renderer>().bounds.size.x;
+                    
+                    aShop.transform.Translate(Vector3.left * (shopSize));
+                    //aShop.transform.position = new Vector3(preShop.transform.position.x - offset - constructed , preShop.transform.position.y, preShop.transform.position.z);
+                    
+                    
                     fits = true;
                     preShop = aShop;
-                    remainder = northSide-constructed;
+                    remainder -= shopSize;
                     Debug.Log("Remainin:" + remainder);
                 
                 }
             }
             limit++;
         }
+       
+        start.transform.GetChild(0).transform.Translate(Vector3.left * offset);
     }
     private void PlaceCornerShops()
     {
@@ -134,10 +151,7 @@ public class EstateMakerPro : MonoBehaviour
         se.transform.position = new Vector3(width, 0, 0);
         se.transform.Rotate(0, 90, 0);
 
-        northSide = (int)(ne.transform.position.x - nw.transform.position.x) - nwDepth - neWidth;
-        //northSide = (int)(ne.transform.position.x - nw.transform.position.x);
-        //northSide = (int)(ne.transform.position.x - nw.transform.position.x);
-        //northSide = (int)(ne.transform.position.x - nw.transform.position.x);
-        Debug.Log("North side:" + northSide);
+        
+        
     }
 }
