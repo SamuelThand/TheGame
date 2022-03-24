@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1095082775184744523
+--- !u!1 &7528001072426052108
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6229270632006776479}
-  - component: {fileID: 1401308808208980483}
-  - component: {fileID: 619267944514562333}
+  - component: {fileID: 3546732379453701336}
+  - component: {fileID: 8374483105583714372}
+  - component: {fileID: 8057575278562272090}
   m_Layer: 0
   m_Name: ShopLargeLarge
   m_TagString: Untagged
@@ -18,35 +18,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6229270632006776479
+--- !u!4 &3546732379453701336
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095082775184744523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7528001072426052108}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1401308808208980483
+--- !u!33 &8374483105583714372
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095082775184744523}
+  m_GameObject: {fileID: 7528001072426052108}
   m_Mesh: {fileID: 8064631743509287643, guid: 7f199b7315380844384e6bfbf59c71a2, type: 3}
---- !u!23 &619267944514562333
+--- !u!23 &8057575278562272090
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095082775184744523}
+  m_GameObject: {fileID: 7528001072426052108}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
