@@ -28,9 +28,14 @@ public class EstateMakerPro : MonoBehaviour
     int southSide;
     int westSide;
     int eastSide;
+    [SerializeReference] Object[] pFillers;
+    [SerializeReference] Object[] pCorners;
+    [SerializeReference] Object[] pStores;
+    
     // Start is called before the first frame update
     void Start()
     {
+        /*
         fronts = shops.Concat<GameObject>(fillers).ToArray<GameObject>();
         positionFootprint();
         PlaceCornerShops();
@@ -42,19 +47,27 @@ public class EstateMakerPro : MonoBehaviour
         placeSide(se,ne);
      
         //GetCorners();
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        pFillers = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Fillers/*");
+        pCorners = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Corners/*");
+        pStores = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Stores/*");
+        Debug.Log("pFillers:" + pFillers.Length);
     }
     private void OnValidate()
     {
         
+
+    }
+    private void Awake()
+    {
+        
     }
 
-   
     private void positionFootprint()
     {
         footPrint.transform.Translate(width / 2, 0, depth / 2); 

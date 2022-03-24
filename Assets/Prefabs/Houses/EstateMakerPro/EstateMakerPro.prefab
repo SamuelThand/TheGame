@@ -45,19 +45,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cornerShops:
-  - {fileID: 2310682315426532979, guid: c4c4ae07de271c746b5e9c240c8db4de, type: 3}
+  - {fileID: 7528001072426052108, guid: 32fa17f059da3f34782b34b17a358f0a, type: 3}
+  - {fileID: 5950131548235591580, guid: 93f215762a4743b4584598d087e1e230, type: 3}
+  - {fileID: 4741450335969066277, guid: f560ab5d9dc512544a0a851408f28e08, type: 3}
+  - {fileID: 7824502672279029924, guid: c4c4ae07de271c746b5e9c240c8db4de, type: 3}
   shops:
-  - {fileID: 7092598764830348404, guid: f4b9fd19db7b1e543b0c4619e1cf677b, type: 3}
-  - {fileID: 438661684680866169, guid: 8a811e7f6ed20e044b07ac252bd245ef, type: 3}
-  - {fileID: 8342034045095356503, guid: eb9851e9ee838f74f9b6a06e01550fb7, type: 3}
+  - {fileID: 4351569102620507290, guid: f4b9fd19db7b1e543b0c4619e1cf677b, type: 3}
+  - {fileID: 7661521280686042107, guid: 8a811e7f6ed20e044b07ac252bd245ef, type: 3}
+  - {fileID: 3811587259632917086, guid: eb9851e9ee838f74f9b6a06e01550fb7, type: 3}
   fillers:
-  - {fileID: 5024764554617837106, guid: abd68e674ed18bf40a38e31091826b69, type: 3}
-  - {fileID: 1887366204985016028, guid: 9c58d8fc4e50d724f98e5428a8e9979b, type: 3}
-  - {fileID: 7999571688232162849, guid: 5d3f6b62fe075db409d12740424a9b1b, type: 3}
+  - {fileID: 3638225264204220828, guid: 5d3f6b62fe075db409d12740424a9b1b, type: 3}
+  - {fileID: 2530204250061655375, guid: 9c58d8fc4e50d724f98e5428a8e9979b, type: 3}
+  - {fileID: 8685995204441885054, guid: abd68e674ed18bf40a38e31091826b69, type: 3}
   update: 1
   width: 64
   depth: 48
   footPrint: {fileID: 6331372061539865620}
+  pFillers: []
+  pCorners: []
+  pStores: []
 --- !u!1 &8065848860544230160
 GameObject:
   m_ObjectHideFlags: 0
