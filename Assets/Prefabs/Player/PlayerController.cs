@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if (wKeywasPressed)
         {
             if (!(currentSpeed >= avatar.topSpeed)) {
-            playerBody.AddForce(avatar.transform.forward * 25 * avatar.accelerationSpeed, ForceMode.Acceleration);
+            playerBody.AddForce(avatar.transform.forward * 100 * avatar.accelerationSpeed, ForceMode.Acceleration);
             wKeywasPressed = false;
             } 
         }
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (sKeywasPressed)
         {
             if (!(currentSpeed >= (avatar.topSpeed / 2))) {
-            playerBody.AddForce(avatar.transform.forward * -20 * avatar.accelerationSpeed, ForceMode.Acceleration);
+            playerBody.AddForce(avatar.transform.forward * -100 * avatar.accelerationSpeed, ForceMode.Acceleration);
             sKeywasPressed = false;
             }
         }

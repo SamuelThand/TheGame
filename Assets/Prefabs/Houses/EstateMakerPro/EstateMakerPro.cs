@@ -62,9 +62,9 @@ public class EstateMakerPro : MonoBehaviour
 
     private GameObject GetRandomCornerShop()
     {
-        int rand = Random.Range(0,cornerShops.Length);
-        //Debug.Log("random = " + rand);
-        return Instantiate(cornerShops[3],this.transform);
+        int rand = Random.Range(0, cornerShops.Length);
+
+        return Instantiate(cornerShops[rand],this.transform);
     }
     private void placeSide(GameObject start,GameObject end)
     {
