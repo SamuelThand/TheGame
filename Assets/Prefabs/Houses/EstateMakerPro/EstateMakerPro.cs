@@ -17,6 +17,8 @@ public class EstateMakerPro : MonoBehaviour
     public int depth;
     [SerializeReference] Transform footPrint;
 
+    GameObject target;
+
     GameObject nw;
     GameObject ne;
     GameObject sw;
@@ -73,13 +75,6 @@ public class EstateMakerPro : MonoBehaviour
         float sSize = (end.GetComponent<Renderer>().bounds.size.x + start.GetComponent<Renderer>().bounds.size.x);
         int remainder = (int)Mathf.Round(Mathf.Abs(xSize + zSize) - sSize);
         
-        Debug.Log("xS:" + xSize);
-        Debug.Log("zS:" + zSize);
-        Debug.Log("sS:" + sSize);
-       
-        
-
-        Debug.Log("Start remainder:" + remainder);
         
         GameObject preShop = start;
         
@@ -98,22 +93,17 @@ public class EstateMakerPro : MonoBehaviour
                 {
                     int shopSize = (int)(fronts[rand].GetComponent<Renderer>().bounds.size.x);
                     GameObject aShop = Instantiate(fronts[rand],preShop.transform.position,preShop.transform.rotation,preShop.transform);
-                    
-                    
                     aShop.transform.Translate(Vector3.left * (shopSize));
-                    //aShop.transform.position = new Vector3(preShop.transform.position.x - offset - constructed , preShop.transform.position.y, preShop.transform.position.z);
-                    
                     
                     fits = true;
                     preShop = aShop;
                     remainder -= shopSize;
-                    Debug.Log("Remainin:" + remainder);
+                    
                 
                 }
             }
             limit++;
         }
-       
         start.transform.GetChild(0).transform.Translate(Vector3.left * offset);
     }
     private void PlaceCornerShops()
@@ -155,3 +145,10 @@ public class EstateMakerPro : MonoBehaviour
         
     }
 }
+/*
+ * Openings should have same texture as adjecent building
+ * Not adding same module twice
+ * Not adding same "type" twice
+ * 
+ * 
+ */
