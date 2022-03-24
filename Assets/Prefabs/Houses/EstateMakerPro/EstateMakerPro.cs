@@ -42,7 +42,7 @@ public class EstateMakerPro : MonoBehaviour
     private void positionFootprint()
     {
         footPrint.transform.Translate(width / 2, 0, depth / 2); 
-        footPrint.transform.localScale = new Vector3(width,0.1f,depth);
+        footPrint.transform.localScale = new Vector3(width,0.05f,depth);
         
     }
     private GameObject GetRandomCornerShop()
@@ -53,9 +53,13 @@ public class EstateMakerPro : MonoBehaviour
     private void PlaceCornerShops()
     {
         GameObject nw = GetRandomCornerShop();
+        nw.name = "NorthWest";
         GameObject ne = GetRandomCornerShop();
+        ne.name = "NorthEast";
         GameObject sw = GetRandomCornerShop();
+        sw.name = "SouthWest";
         GameObject se = GetRandomCornerShop();
+        se.name = "SouthEast";
 
         int nwWidth = (int)Mathf.Round(nw.GetComponent<Renderer>().bounds.size.x);
         int nwDepth = (int)Mathf.Round(nw.GetComponent<Renderer>().bounds.size.y);
@@ -72,14 +76,14 @@ public class EstateMakerPro : MonoBehaviour
         nw.transform.position = new Vector3(0+nwDepth, 0, depth-nwWidth);
         nw.transform.Rotate(0, -90, 0);
 
-        ne.transform.position = new Vector3(width, 0, depth);
-        //ne.transform.Rotate(0, 180, 0);
+        ne.transform.position = new Vector3(width-neWidth, 0, depth-neDepth);
+        ne.transform.Rotate(0, 0, 0);
 
-        //sw.transform.position = new Vector3(0, 0, 0);
-        //sw.transform.Rotate(0, 180, 0);
+        sw.transform.position = new Vector3(0+swWidth, 0, 0+swDepth);
+        sw.transform.Rotate(0, 180, 0);
 
-        //se.transform.position = new Vector3(0, 0, 0);
-       //se.transform.Rotate(0, 180, 0);
+        se.transform.position = new Vector3(width-seDepth, 0, 0+seWidth);
+        se.transform.Rotate(0, 90, 0);
 
 
     }
