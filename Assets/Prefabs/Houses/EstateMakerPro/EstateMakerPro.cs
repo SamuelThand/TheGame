@@ -7,56 +7,66 @@ using System.Linq;
 
 public class EstateMakerPro : MonoBehaviour
 {
-    enum Heading { north, south , west, east}
+    enum Heading { NW, NE , SW, SE}
     [SerializeReference] private GameObject[] cornerShops;
     [SerializeReference] private GameObject[] shops;
     [SerializeReference] private GameObject[] fillers;
+    [SerializeReference] private GameObject[] cornerApartments;
+    [SerializeReference] private GameObject[] apartments;
+    [SerializeField] private int stories;
     private GameObject[] fronts;
     public bool update;
     public int width;
     public int depth;
-    [SerializeReference] Transform footPrint;
+    //[SerializeReference] Transform footPrint;
 
     GameObject target;
 
-    GameObject nw;
-    GameObject ne;
-    GameObject sw;
-    GameObject se;
 
-    int northSide;
-    int southSide;
-    int westSide;
-    int eastSide;
-    [SerializeReference] Object[] pFillers;
-    [SerializeReference] Object[] pCorners;
-    [SerializeReference] Object[] pStores;
+    float floorHeight;
     
     // Start is called before the first frame update
     void Start()
     {
-        /*
+        floorHeight = 0;
         fronts = shops.Concat<GameObject>(fillers).ToArray<GameObject>();
-        positionFootprint();
-        PlaceCornerShops();
-        
-        placeSide(nw,sw);
-        placeSide(ne,nw);
-        
-        placeSide(sw,se);
-        placeSide(se,ne);
-     
+        //positionFootprint();
+        GameObject[] shopFloor =  PlaceCornersFromCollection(cornerShops);
+
+        placeSide(shopFloor[(int)Heading.NW], shopFloor[(int)Heading.SW], fronts);
+        placeSide(shopFloor[(int)Heading.NE], shopFloor[(int)Heading.NW], fronts);
+        placeSide(shopFloor[(int)Heading.SW], shopFloor[(int)Heading.SE], fronts);
+        placeSide(shopFloor[(int)Heading.SE], shopFloor[(int)Heading.NE], fronts);
+
+        floorHeight = 4;
+
+        for(int i = 0; i < stories; i++)
+        {
+            GameObject[] aFloor = PlaceCornersFromCollection(cornerApartments);
+            placeSide(aFloor[(int)Heading.NW], aFloor[(int)Heading.SW],apartments);
+            placeSide(aFloor[(int)Heading.NE], aFloor[(int)Heading.NW],apartments);
+            placeSide(aFloor[(int)Heading.SW], aFloor[(int)Heading.SE],apartments);
+            placeSide(aFloor[(int)Heading.SE], aFloor[(int)Heading.NE],apartments);
+            floorHeight += 2.5f;
+        }
+       
+        //placeSide((int)Heading.NW, Heading.SW);
+        //placeSide((int)Heading.NE, Heading.NW);
+
+        //placeSide((int)Heading.SW, Heading.SE);
+        //placeSide((int)Heading.SE, Heading.NE);
+
         //GetCorners();
-        */
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        pFillers = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Fillers/*");
-        pCorners = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Corners/*");
-        pStores = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Stores/*");
-        Debug.Log("pFillers:" + pFillers.Length);
+        //pFillers = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Fillers/*");
+        //pCorners = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Corners/*");
+        // = AssetDatabase.LoadAllAssetsAtPath("Assets/Prefabs/Houses/EstateMakerPro/templates/Stores/*");
+        //Debug.Log("pFillers:" + pFillers.Length);
     }
     private void OnValidate()
     {
@@ -70,18 +80,18 @@ public class EstateMakerPro : MonoBehaviour
 
     private void positionFootprint()
     {
-        footPrint.transform.Translate(width / 2, 0, depth / 2); 
-        footPrint.transform.localScale = new Vector3(width,0.05f,depth);
+        //footPrint.transform.Translate(width / 2, 0, depth / 2); 
+        //footPrint.transform.localScale = new Vector3(width,0.05f,depth);
         
     }
 
-    private GameObject GetRandomCornerShop()
+    private GameObject GetRandomCornerFromCollection(GameObject[] collection)
     {
-        int rand = Random.Range(0, cornerShops.Length);
+        int rand = Random.Range(0, collection.Length);
 
-        return Instantiate(cornerShops[rand],this.transform);
+        return Instantiate(collection[rand],this.transform);
     }
-    private void placeSide(GameObject start,GameObject end)
+    private void placeSide(GameObject start,GameObject end, GameObject[] collection)
     {
         float xSize = (end.transform.position.x - start.transform.position.x);
         float zSize = (end.transform.position.z - start.transform.position.z);
@@ -100,12 +110,12 @@ public class EstateMakerPro : MonoBehaviour
             
             while (!fits)
             {
-                int rand = Random.Range(0, fronts.Length);
-                
-                if((int)Mathf.Round(fronts[rand].GetComponent<Renderer>().bounds.size.x) <= remainder)
+                int rand = Random.Range(0, collection.Length);
+                Debug.Log("rand:" + rand);
+                if((int)Mathf.Round(collection[rand].GetComponent<Renderer>().bounds.size.x) <= remainder)
                 {
-                    int shopSize = (int)(fronts[rand].GetComponent<Renderer>().bounds.size.x);
-                    GameObject aShop = Instantiate(fronts[rand],preShop.transform.position,preShop.transform.rotation,preShop.transform);
+                    int shopSize = (int)(collection[rand].GetComponent<Renderer>().bounds.size.x);
+                    GameObject aShop = Instantiate(collection[rand],preShop.transform.position,preShop.transform.rotation,preShop.transform);
                     aShop.transform.Translate(Vector3.left * (shopSize));
                     
                     fits = true;
@@ -119,15 +129,21 @@ public class EstateMakerPro : MonoBehaviour
         }
         start.transform.GetChild(0).transform.Translate(Vector3.left * offset);
     }
-    private void PlaceCornerShops()
+    private GameObject[] PlaceCornersFromCollection(GameObject[] collection)
     {
-        nw = GetRandomCornerShop();
+        
+        GameObject nw;
+        GameObject ne;
+        GameObject sw;
+        GameObject se;
+        
+        nw = GetRandomCornerFromCollection(collection);
         nw.name = "NorthWest";
-        ne = GetRandomCornerShop();
+        ne = GetRandomCornerFromCollection(collection);
         ne.name = "NorthEast";
-        sw = GetRandomCornerShop();
+        sw = GetRandomCornerFromCollection(collection);
         sw.name = "SouthWest";
-        se = GetRandomCornerShop();
+        se = GetRandomCornerFromCollection(collection);
         se.name = "SouthEast";
 
         int nwWidth = (int)Mathf.Round(nw.GetComponent<Renderer>().bounds.size.x);
@@ -142,20 +158,25 @@ public class EstateMakerPro : MonoBehaviour
         int seWidth = (int)Mathf.Round(se.GetComponent<Renderer>().bounds.size.x);
         int seDepth = (int)Mathf.Round(se.GetComponent<Renderer>().bounds.size.y);
 
-        nw.transform.position = new Vector3(0, 0, depth);
+        nw.transform.position = new Vector3(0, floorHeight, depth);
         nw.transform.Rotate(0, -90, 0);
 
-        ne.transform.position = new Vector3(width, 0, depth);
+        ne.transform.position = new Vector3(width, floorHeight, depth);
         ne.transform.Rotate(0, 0, 0);
 
-        sw.transform.position = new Vector3(0, 0, 0);
+        sw.transform.position = new Vector3(0, floorHeight, 0);
         sw.transform.Rotate(0, 180, 0);
 
-        se.transform.position = new Vector3(width, 0, 0);
+        se.transform.position = new Vector3(width, floorHeight, 0);
         se.transform.Rotate(0, 90, 0);
 
+        GameObject[] ret = new GameObject[4];
+        ret[(int)Heading.NW] = nw;
+        ret[(int)Heading.NE] = ne;
+        ret[(int)Heading.SW] = sw;
+        ret[(int)Heading.SE] = se;
         
-        
+        return ret;
     }
 }
 /*
